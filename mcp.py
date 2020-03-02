@@ -7,6 +7,7 @@ class MCP :
     def Y(self, entradas) :
         
         w = list()
+        
         contador = 0
         
         for entrada in entradas :
