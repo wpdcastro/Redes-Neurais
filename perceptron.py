@@ -34,12 +34,15 @@ class Perceptron:
     def treinar(self, tabela, res_esperado):
 
         temErro = True
+        etapa = 0
 
-        while(temErro):
+        while(temErro and etapa <= 10000):
 
             temErro = False
-
+            
             for idx in range (0, len(tabela)) :
+                
+                etapa = etapa + 1
 
                 e = res_esperado[idx] - self.y(tabela[idx])
 
