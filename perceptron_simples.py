@@ -1,3 +1,5 @@
+''' Perceptron '''
+''' @author : wpdcastro@gmail.com '''
 import random
 
 class Perceptron:
@@ -33,20 +35,15 @@ class Perceptron:
 
     def treinar(self, tabela, res_esperado):
 
-        temErro = True
-
+        temErro=True
         while(temErro):
-
-            temErro = False
-
+            temErro=False
             for idx in range (0, len(tabela)) :
 
                 e = res_esperado[idx] - self.y(tabela[idx])
 
                 if e != 0 :
-                    
-                    temErro = True  
-
+                    temErro=True   
                     self.w[0] = self.w[0] + self.eta * e
 
                     for i in range(1,len(self.w)):
@@ -55,3 +52,21 @@ class Perceptron:
   
 
         return False
+
+
+if __name__ == "__main__":
+
+    percy = Perceptron(2)
+
+    pad = [[0,0,0,0],[0,0,0,1],[0,0,1,0],[0,0,1,1,]] 
+
+    res_esperado = [0,1]
+    print(percy.w)
+            
+    percy.treinar(pad, res_esperado)
+    print(percy.w)
+
+    print("Y: " + str(percy.y([0, 1])))
+    print("Y: " + str(percy.y([1, 0])))
+    print("Y: " + str(percy.y([1, 1])))
+    print("Y: " + str(percy.y([1, 1])))
