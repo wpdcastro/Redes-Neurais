@@ -12,12 +12,8 @@ if __name__ == "__main__":
     ]
 
     res_desejado = [0, 0, 0, 1]
-
-    print(percy.w)
-            
+                
     percy.treinar(pad, res_desejado)
-
-    print(percy.w)
 
     print("Y: " + str(percy.y([0, 0])))
     print("Y: " + str(percy.y([0, 1])))
