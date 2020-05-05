@@ -1,18 +1,15 @@
 class MCP :
     
-    def __init__(self, w, limiar) :
-        self.w = w
+    def __init__(self, limiar) :
         self.limiar = limiar
     
-    def Y(self, entradas) :
-        
+    def Y(self, pesos, entradas) :
+                
         w = list()
-        
-        contador = 0
-        
+
         for entrada in entradas :
-            
-            w.append(entrada * self.w[contador])
+            for peso in pesos:
+                w.append(entrada * peso)
             
         if self.soma(w) >= self.limiar :
             return 1
@@ -26,12 +23,14 @@ class MCP :
         return res 
     
 if __name__ == "__main__":
-    
-    main() 
-    
-    mcp = MCP([0.5,0.5], 0.5)
-    
-    print("Y: ", mcp.Y([0,0]))
-    print("Y: ", mcp.Y([0,1]))
-    print("Y: ", mcp.Y([1,0]))
-    print("Y: ", mcp.Y([1,1]))
+
+    mcp = MCP(0.5)
+    pesos = []
+    pesos.insert(0, [-0.46, -0.07, 0.94])
+    pesos.insert(1, [0.10, 0.94, 0.46])
+    pesos.insert(2, [0.78, -0.22, 0.58])
+
+    y1 = mcp.Y(pesos[0], [0, 0])
+    y2 = mcp.Y(pesos[1], [0, 0])
+    o1 = mcp.Y(pesos[2], [y1, y2])
+    # o2 = mcp.Y(pesos[3], [y1, y2])
